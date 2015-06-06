@@ -1,0 +1,1656 @@
+#LyX 2.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 474
+\begin_document
+\begin_header
+\textclass article
+\begin_preamble
+\usepackage{tikz-qtree}
+\usetikzlibrary{arrows,automata}
+\end_preamble
+\use_default_options true
+\begin_modules
+enumitem
+\end_modules
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_math auto
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\float_placement H
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Title
+Social Computing - Ex 1
+\end_layout
+
+\begin_layout Author
+Jonathan Hirsch - 200357697
+\end_layout
+
+\begin_layout Section
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Let 
+\begin_inset Formula $p<\frac{1}{4},c>0$
+\end_inset
+
+, and examine the left subtree (meaning, the 
+\begin_inset Formula $\frac{n}{2}$
+\end_inset
+
+ leaves on the left side of the tree.
+ For each of these leaves, since the lowest common ancestor is the root
+ then the probability to not be connected to any leaf on the right side
+ is:
+\begin_inset Formula 
+\[
+P_{not}\left(l,r\right)=\left(1-c\cdot p^{h}\right)^{\frac{n}{2}}
+\]
+
+\end_inset
+
+and the probability for all leaves on the left to be disconnected from the
+ right is
+\begin_inset Formula 
+\begin{align*}
+P\left(L,R\right) & =\left[\left(1-c\cdot p^{h}\right)^{\frac{n}{2}}\right]^{\frac{n}{2}}\\
+ & =\left(1-c\cdot p^{h}\right)^{\frac{n^{2}}{4}}\\
+\left(\text{plugging in }n=2^{h}\right) & =\left(1-c\cdot p^{h}\right)^{4^{h-1}}\\
+ & \approx e^{-c\cdot p^{h}4^{h-1}}\\
+ & =e^{-\frac{c}{4}\left(4p\right)^{h}}\\
+\left(p<\frac{1}{4}\Rightarrow4p<1\Rightarrow\right) & \lim_{h\rightarrow\infty}e^{-\frac{c}{4}\left(4p\right)^{h}}\rightarrow e^{0}\\
+ & =1
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Let 
+\begin_inset Formula $p=\frac{1}{2},c>0$
+\end_inset
+
+.
+ For each leaf, the number of possible neighbours at tree distance 
+\begin_inset Formula $d$
+\end_inset
+
+ is 
+\begin_inset Formula $2^{d-1}$
+\end_inset
+
+, then
+\begin_inset Formula 
+\begin{align*}
+\mathbb{E}\left[\#_{neighbours}\right] & =\sum_{d=1}^{d=h}2^{d-1}\cdot c\cdot p^{d}\\
+ & =c\sum_{d=1}^{d=h}2^{d-1}\cdot\left(\frac{1}{2}\right)^{d}\\
+ & =c\sum_{d=1}^{d=h}\frac{1}{2}\\
+ & =c\frac{h\left(1+\frac{h-1}{2}\right)}{2}\\
+ & =c\frac{h\left(1+h\right)}{4}
+\end{align*}
+
+\end_inset
+
+which of course goes to 
+\begin_inset Formula $\infty$
+\end_inset
+
+ as 
+\begin_inset Formula $h\rightarrow\infty$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Let 
+\begin_inset Formula $p\geq\frac{1}{2},c>0$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Subsubsection
+Inside Left Subtree
+\end_layout
+
+\begin_layout Standard
+The number of possible edges in the left subtree is 
+\begin_inset Formula 
+\[
+\#_{L}=\left(\begin{array}{c}
+\frac{n}{2}\\
+2
+\end{array}\right)\approx\frac{n^{2}}{8}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Now, for a given node, the numder of edges it can have through a parent
+ at height 
+\begin_inset Formula $k$
+\end_inset
+
+ is 
+\begin_inset Formula 
+\[
+2^{k-1}
+\]
+
+\end_inset
+
+and we have a total of 
+\begin_inset Formula $\frac{n}{2}$
+\end_inset
+
+ nodes, so given a tree of height 
+\begin_inset Formula $h$
+\end_inset
+
+, the total amount of edges using a parent at height 
+\begin_inset Formula $k$
+\end_inset
+
+ is given by (dividing by 
+\begin_inset Formula $2$
+\end_inset
+
+ to account for duplicate edges):
+\begin_inset Formula 
+\[
+2^{k-1}\cdot\frac{n}{4}=2^{k-1}2^{h-2}=2^{h+k-3}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Each realized edge can be seen as a 'successful' result in a bernoulli trial,
+ so the expected number of edges is
+\begin_inset Formula 
+\[
+\sum_{k=1}^{h-1}2^{h+k-3}\cdot c\cdot p^{k}=2^{h-3}\cdot c\sum_{k=1}^{h-1}\left(2p\right)^{k}=2^{h-3}\cdot c\cdot\frac{2p\left(\left(2p\right)^{h-1}-1\right)}{2p-1}
+\]
+
+\end_inset
+
+which means that the expected density is
+\begin_inset Formula 
+\[
+\mathbb{E}\left(Density\right)=\frac{2^{h-3}\cdot c\cdot\frac{2p\left(\left(2p\right)^{h-1}-1\right)}{2p-1}}{\frac{n^{2}}{8}}=2^{-h}\cdot c\cdot\frac{2p\left(\left(2p\right)^{h-1}-1\right)}{2p-1}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Between the subtrees
+\end_layout
+
+\begin_layout Standard
+Now, the number of potential edges is
+\begin_inset Formula 
+\[
+\#_{Between}=\frac{n^{2}}{4}
+\]
+
+\end_inset
+
+Since all of the edges connect the two subtrees, the common ancestor is
+ always the root, therefore the expected number of realized edges is
+\begin_inset Formula 
+\[
+\frac{n^{2}}{4}\cdot c\cdot p^{h}
+\]
+
+\end_inset
+
+and the density is
+\begin_inset Formula 
+\[
+\mathbb{E}\left(Density\right)=\frac{\frac{n^{2}}{4}\cdot c\cdot p^{h}}{\frac{n^{2}}{4}}=c\cdot p^{h}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Clustering
+\end_layout
+
+\begin_layout Standard
+We'll compare the two densities:
+\begin_inset Formula 
+\[
+\frac{D_{Left}}{D_{Between}}=\frac{\left(\left(2p\right)^{h-1}-1\right)}{\left(2p-1\right)\left(2p\right)^{h-1}}\approx\frac{1}{\left(2p-1\right)}
+\]
+
+\end_inset
+
+and so, as 
+\begin_inset Formula $p\rightarrow1$
+\end_inset
+
+ the densities grow alike and no clustering occurs, but as 
+\begin_inset Formula $p\rightarrow\frac{1}{2}$
+\end_inset
+
+ then 
+\begin_inset Formula $D_{Left}\gg D_{Between}$
+\end_inset
+
+ and the two groups form distinct clusters
+\end_layout
+
+\begin_layout Section
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Throughout this question we'll follow the same reasoning used for the proofs
+ in the case where 
+\begin_inset Formula $d=2$
+\end_inset
+
+, and try and keep notation a close as the origin for brevity and clarity
+\end_layout
+
+\begin_layout Subsection
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Let 
+\begin_inset Formula $r=0\Rightarrow P\left(u\rightarrow v\right)=\frac{1}{n-1}$
+\end_inset
+
+.
+ Let 
+\begin_inset Formula $N$
+\end_inset
+
+ denote the set of nodes that reside within a 
+\begin_inset Formula $\sqrt{n}$
+\end_inset
+
+ radius of the last node (note that 
+\begin_inset Formula $\left|N\right|=\sqrt{n}$
+\end_inset
+
+).
+ The probability of a node 
+\begin_inset Formula $u$
+\end_inset
+
+ to have a long link into 
+\begin_inset Formula $N$
+\end_inset
+
+ is:
+\begin_inset Formula 
+\[
+P\left(u\rightarrow N\right)=\frac{\sqrt{n}}{n-1}\approx\frac{1}{\sqrt{n}}
+\]
+
+\end_inset
+
+now, let 
+\begin_inset Formula $\epsilon$
+\end_inset
+
+ denote the event that in the first 
+\begin_inset Formula $\sqrt{n}$
+\end_inset
+
+ steps we have a long edge into 
+\begin_inset Formula $N$
+\end_inset
+
+:
+\begin_inset Formula 
+\begin{align*}
+P\left(\epsilon\right) & =1-P\left(\overline{\epsilon}\right)\\
+ & =1-\left(1-\frac{\sqrt{n}}{n-1}\right)^{\sqrt{n}}\\
+ & \approx1-e^{-\frac{n}{n-1}}\\
+ & \approx0.62
+\end{align*}
+
+\end_inset
+
+Note that 
+\begin_inset Formula $\epsilon$
+\end_inset
+
+ is the event that we will take less than 
+\begin_inset Formula $\sqrt{n}$
+\end_inset
+
+ steps to reach our target.
+ This means that the expected number of steps required:
+\begin_inset Formula 
+\[
+\mathbb{E}\left(\#_{steps}\right)>P\left(\overline{\epsilon}\right)\cdot\sqrt{n}>0.37\sqrt{n}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Let 
+\begin_inset Formula $r=1$
+\end_inset
+
+, then the probability of two node being connected by a long edge is
+\begin_inset Formula 
+\[
+P\left(u\rightarrow v\right)\frac{d\left(u,v\right)^{-1}}{\sum_{w\neq u}d\left(u,w\right)^{-1}}
+\]
+
+\end_inset
+
+denote
+\begin_inset Formula 
+\[
+Z=\sum_{w\neq u}d\left(u,w\right)^{-1}
+\]
+
+\end_inset
+
+and we'll try to bound the value of 
+\begin_inset Formula $Z$
+\end_inset
+
+.
+\begin_inset Formula 
+\begin{align*}
+Z & \leq\sum_{i=1}^{n-1}2\cdot i^{-1}\\
+ & \leq2\intop_{i=1}^{n-1}\frac{1}{i}di\\
+ & \leq2\left[1+\ln\left(n\right)\right]\\
+ & \leq2\ln\left(3n\right)
+\end{align*}
+
+\end_inset
+
+
+\begin_inset Formula 
+\begin{equation}
+\Rightarrow Z\leq2\ln\left(3n\right)
+\end{equation}
+
+\end_inset
+
+Now, we say that our algorithm is in phase 
+\begin_inset Formula $j$
+\end_inset
+
+ if we are in node 
+\begin_inset Formula $n$
+\end_inset
+
+ and 
+\begin_inset Formula $2^{j}<d\left(u,n\right)\leq2^{j+1}$
+\end_inset
+
+.
+ Initialy, we start at phase 
+\begin_inset Formula $j=\log\left(n\right)$
+\end_inset
+
+, and by design of our algorithm, we progress in a non-decreasing approach
+ w.r.t phases.
+\end_layout
+
+\begin_layout Standard
+Let 
+\begin_inset Formula $X_{j}$
+\end_inset
+
+ be an RV that indicates the total number of steps spent at phase 
+\begin_inset Formula $j$
+\end_inset
+
+, and let 
+\begin_inset Formula $X$
+\end_inset
+
+ denote the total steps spent until the target is reached; clearly 
+\begin_inset Formula $X=\sum_{j=1}^{\log\left(n\right)}X_{j}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Let 
+\begin_inset Formula $L_{j}$
+\end_inset
+
+ denote the set of all nodes of distance up to 
+\begin_inset Formula $2^{j}$
+\end_inset
+
+ of the target.
+ The distance between the node 
+\begin_inset Formula $v$
+\end_inset
+
+ in phase j and an arbitrary node in 
+\begin_inset Formula $u\in B_{j}$
+\end_inset
+
+ is bounded by:
+\begin_inset Formula 
+\[
+d\left(v,u\right)\leq d\left(v,t\right)\leq2^{j+1}
+\]
+
+\end_inset
+
+The number of nodes in 
+\begin_inset Formula $L_{j}$
+\end_inset
+
+ is bounded by (remember we are talking about a straight line ending at
+ 
+\begin_inset Formula $n$
+\end_inset
+
+)
+\begin_inset Formula 
+\[
+\left|L_{j}\right|\geq2^{j}
+\]
+
+\end_inset
+
+A long range contact therefore reaches 
+\begin_inset Formula $L_{j}$
+\end_inset
+
+ with probability of at least
+\begin_inset Formula 
+\[
+\frac{\left|L_{j}\right|\cdot d\left(v,L_{j}\right)^{-1}}{Z}\geq\frac{2^{j}\left[2^{j+1}\right]^{-1}}{2\ln\left(3n\right)}=\frac{1}{4\ln\left(3n\right)}
+\]
+
+\end_inset
+
+Finding a long range contact is therefore a Bernoulli RV with 
+\begin_inset Formula $p\geq\frac{1}{4\ln\left(3n\right)}$
+\end_inset
+
+, therefore
+\begin_inset Formula 
+\[
+\mathbb{E}\left(X_{j}\right)=\sum_{i=1}^{\infty}P\left(X_{j}\geq i\right)\leq\sum_{i=1}^{\infty}P\left(1-\frac{1}{4\ln\left(3n\right)}\right)^{i-1}=4\ln\left(3n\right)
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\begin{equation}
+\Rightarrow\mathbb{E}\left(X\right)=\sum_{j=1}^{\log\left(n\right)}\mathbb{E}\left(X_{j}\right)\leq4\ln\left(3n\right)\log\left(n\right)
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Let 
+\begin_inset Formula $r=2$
+\end_inset
+
+.
+ We'll show that the expected time spent will be at least 
+\begin_inset Formula $a\cdot n^{b}$
+\end_inset
+
+.
+ Our probability function now is
+\begin_inset Formula 
+\[
+P\left(u\rightarrow v\right)\frac{d\left(u,v\right)^{-2}}{\sum_{w\neq u}d\left(u,w\right)^{-2}}
+\]
+
+\end_inset
+
+and note that 
+\begin_inset Formula 
+\[
+\sum_{w\neq u}d\left(u,w\right)^{-2}\geq1
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Let us show that the probability of a link that goes a long way beyond a
+ distance 
+\begin_inset Formula $m$
+\end_inset
+
+ is low.
+ For a given long distance edge 
+\begin_inset Formula $\left(u,v\right)$
+\end_inset
+
+:
+\begin_inset Formula 
+\begin{align*}
+P\left(d\left(u,v\right)>m\right) & \leq\sum_{j=m+1}^{n}2\cdot\frac{j^{-2}}{Z}\\
+ & \leq\frac{2}{Z}\cdot\sum_{j=m+1}^{n}j^{-2}\\
+ & \leq2\intop_{m}^{\infty}j^{-2}dj\\
+ & =4\frac{1}{m}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Now, consider an algorithm that travels through 
+\begin_inset Formula $\frac{1}{8}\sqrt{n}$
+\end_inset
+
+ new nodes.
+ Denote by 
+\begin_inset Formula $\epsilon_{i}$
+\end_inset
+
+ the event in which the algorithm encounters a long edge that leads from
+ the 
+\begin_inset Formula $i_{th}$
+\end_inset
+
+ node visited a distance of over 
+\begin_inset Formula $\sqrt{n}$
+\end_inset
+
+.
+ Denote by 
+\begin_inset Formula $\epsilon$
+\end_inset
+
+ the event that some such long distance edge is encountered in the first
+ 
+\begin_inset Formula $\frac{1}{8}\sqrt{n}$
+\end_inset
+
+ nodes
+\begin_inset Formula 
+\[
+P\left(\epsilon\right)\leq\sum_{i=1}^{\frac{1}{8}\sqrt{n}}P\left(\epsilon_{i}\right)\leq\frac{1}{8}\sqrt{n}\cdot\frac{4}{\sqrt{n}}=\frac{1}{2}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Recall that the event 
+\begin_inset Formula $\overline{\epsilon}$
+\end_inset
+
+ means that we did not encounter long edges in our first 
+\begin_inset Formula $\frac{1}{8}\sqrt{n}$
+\end_inset
+
+ nodes, so we will travel at least that many nodes to reach our target,
+ meaning that the expected number of steps
+\begin_inset Formula 
+\[
+\mathbb{E}\left(\#_{steps}\right)\geq\mathbb{E}\left(\#_{steps}|\overline{\epsilon}\right)P\left(\overline{\epsilon}\right)\geq\frac{1}{16}\sqrt{n}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Let 
+\begin_inset Formula $G$
+\end_inset
+
+ be an undirected connected graph.
+ Let 
+\begin_inset Formula $p$
+\end_inset
+
+ be the probability distribution vector such that 
+\begin_inset Formula 
+\[
+p_{i}=\frac{\deg\left(i\right)}{\sum_{v\in V}\deg\left(v\right)}=\frac{\deg\left(i\right)}{\left|E\right|}
+\]
+
+\end_inset
+
+We'll now show that 
+\begin_inset Formula $p$
+\end_inset
+
+ is a stationary distribution.
+\begin_inset Formula 
+\begin{align*}
+p^{new} & =T\cdot p\\
+\Rightarrow p_{i}^{new} & =\sum_{v\in V}T_{i,v}\cdot p_{v}\\
+ & =\frac{1}{\left|E\right|}\sum_{v\in V}T_{i,v}\cdot\deg\left(v\right)\\
+ & =*
+\end{align*}
+
+\end_inset
+
+and since we know that
+\begin_inset Formula 
+\[
+T_{i,j}=\begin{cases}
+\frac{1}{\deg\left(j\right)} & \left(j,i\right)\in E\\
+0 & \left(j,i\right)\notin E
+\end{cases}
+\]
+
+\end_inset
+
+then
+\begin_inset Formula 
+\begin{align*}
+* & =\frac{1}{\left|E\right|}\sum_{v:\left(i,v\right)\in E}\frac{1}{\deg\left(v\right)}\cdot\deg\left(v\right)\\
+ & =\frac{\deg\left(i\right)}{\left|E\right|}\\
+\Rightarrow p_{i}^{new} & =p_{i}
+\end{align*}
+
+\end_inset
+
+which means that indeed, 
+\begin_inset Formula $p$
+\end_inset
+
+ is a stationary distribution.
+\end_layout
+
+\begin_layout Subsection
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+We will show that in some graphs the second step results in a higher expected
+ value, and in some a lower one.
+\end_layout
+
+\begin_layout Subsubsection
+Higher
+\end_layout
+
+\begin_layout Standard
+Examine the following graph
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{tikzpicture}[auto,node distance=1.5cm,                     semithick]
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+node[state] (A) {};
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+node[state] (B) [below right of=A] {};
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+node[state] (C) [below right of=B] {};
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+node[state] (D) [below left of=C] {};
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+node[state] (E) [below left of=D] {};
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+node[state] (F) [below right of=C] {};
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+node[state] (G) [below right of=F] {};
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+node[state] (H) [above right of=C] {};
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+node[state] (I) [above right of=H] {};
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+path
+\end_layout
+
+\begin_layout Plain Layout
+
+		(B) edge	node {} (A)
+\end_layout
+
+\begin_layout Plain Layout
+
+			edge	node {} (C)
+\end_layout
+
+\begin_layout Plain Layout
+
+		(D) edge	node {} (E)
+\end_layout
+
+\begin_layout Plain Layout
+
+			edge	node {} (C)
+\end_layout
+
+\begin_layout Plain Layout
+
+		(F) edge	node {} (G)
+\end_layout
+
+\begin_layout Plain Layout
+
+			edge	node {} (C)
+\end_layout
+
+\begin_layout Plain Layout
+
+		(H) edge	node {} (I)
+\end_layout
+
+\begin_layout Plain Layout
+
+			edge	node {} (C);
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{tikzpicture}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Second Step Raises Expectation
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Initially assigning each node 
+\begin_inset Formula $\frac{1}{9}$
+\end_inset
+
+ we achieve the following results
+\begin_inset Formula 
+\begin{align*}
+\mathbb{E}\left(S_{1}\right) & =4\left(\frac{1}{2}\cdot\frac{1}{9}\right)\cdot1+4\left(\frac{1}{9}+\frac{1}{36}\right)\cdot2+\left(\frac{1}{2}\cdot\frac{4}{9}\right)\cdot4\\
+ & =\frac{20}{9}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+\mathbb{E}\left(S_{2}\right) & =4\left(\frac{1}{2}\cdot\frac{1}{9}+\frac{1}{4}\cdot\frac{1}{2}\cdot\frac{1}{9}\right)\cdot1+4\left(\frac{1}{2}\cdot\frac{1}{9}+\frac{1}{2}\cdot\frac{1}{9}\right)\cdot2+\left(\frac{1}{2}\cdot\frac{4}{9}+\frac{1}{2}\cdot\frac{1}{9}\right)\cdot4\\
+ & =\frac{5}{18}+\frac{16}{18}+\frac{20}{18}=\frac{41}{18}
+\end{align*}
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\Rightarrow\mathbb{E}\left(S_{2}\right)>\mathbb{E}\left(S_{1}\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Lower
+\end_layout
+
+\begin_layout Standard
+Examine the following graph
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{tikzpicture}[auto,node distance=1.5cm,                     semithick]
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+node[state] (A) {};
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+node[state] (B) [below right of=A] {};
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+node[state] (C) [below left of=A] {};
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+path
+\end_layout
+
+\begin_layout Plain Layout
+
+		(A) edge	node {} (B)
+\end_layout
+
+\begin_layout Plain Layout
+
+			edge	node {} (C);
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{tikzpicture}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Second Step Raises Expectation
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+And assign initial values of 
+\begin_inset Formula $\frac{1}{3}$
+\end_inset
+
+, then
+\begin_inset Formula 
+\begin{align*}
+\mathbb{E}\left(S_{1}\right) & =2\cdot\left(\frac{1}{2}\cdot\frac{1}{3}\right)\cdot1+\left(\frac{2}{3}\right)\cdot2\\
+ & =\frac{5}{3}
+\end{align*}
+
+\end_inset
+
+
+\begin_inset Formula 
+\begin{align*}
+\mathbb{E}\left(S_{2}\right) & =2\cdot\left(\frac{1}{2}\cdot\frac{2}{3}\right)\cdot1+\left(\frac{1}{3}\right)\cdot2\\
+ & =\frac{4}{3}
+\end{align*}
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\Rightarrow\mathbb{E}\left(S_{2}\right)<\mathbb{E}\left(S_{1}\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Adding Edges
+\end_layout
+
+\begin_layout Standard
+Examine the following graph
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{tikzpicture}[->,>=stealth',shorten >=1pt,auto,node distance=2.8cm,
+                     semithick]
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+node[state]			(A)	{A};
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+node[state]			(B) [right of=A] {B};
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+node[state]			(C) [below of=B] {C};
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+path
+\end_layout
+
+\begin_layout Plain Layout
+
+		(A) edge	node {} (B)
+\end_layout
+
+\begin_layout Plain Layout
+
+		(B) edge	node {} (C)
+\end_layout
+
+\begin_layout Plain Layout
+
+		(C) edge	node {} (A);
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{tikzpicture}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Formula $\Downarrow$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{tikzpicture}[->,>=stealth',shorten >=1pt,auto,node distance=2.8cm,
+                     semithick]
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+node[state]			(A)	{A};
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+node[state]			(B) [right of=A] {B};
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+node[state]			(C) [below of=B] {C};
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+path
+\end_layout
+
+\begin_layout Plain Layout
+
+		(A) edge	node {} (B)
+\end_layout
+
+\begin_layout Plain Layout
+
+		(B) edge	node {} (A)
+\end_layout
+
+\begin_layout Plain Layout
+
+			edge	node {} (C)
+\end_layout
+
+\begin_layout Plain Layout
+
+		(C) edge	node {} (A);
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{tikzpicture}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Adding Edge To Increase Value
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+First note that the first graph will forever stay in the initial distribution
+ (
+\begin_inset Formula $p^{\star}=\begin{bmatrix}\frac{1}{3}\\
+\frac{1}{3}\\
+\frac{1}{3}
+\end{bmatrix}$
+\end_inset
+
+).
+ Now, after adding the edge 
+\begin_inset Formula $B\rightarrow A$
+\end_inset
+
+, we get the following transition matrix:
+\begin_inset Formula 
+\[
+T=\left[\begin{array}{ccc}
+0 & \frac{1}{2} & 1\\
+1 & 0 & 0\\
+0 & \frac{1}{2} & 0
+\end{array}\right]
+\]
+
+\end_inset
+
+and after some algebra we find that the normalized eigenvector with eigenvalue
+ of 
+\begin_inset Formula $1$
+\end_inset
+
+ is 
+\begin_inset Formula $p^{\star}=\begin{bmatrix}0.4\\
+0.4\\
+0.2
+\end{bmatrix}$
+\end_inset
+
+, and clearly 
+\begin_inset Formula $B$
+\end_inset
+
+ has increased the probability of it being visited
+\end_layout
+
+\begin_layout Subsubsection
+Removing Edges
+\end_layout
+
+\begin_layout Standard
+Examine the following diagrams
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{tikzpicture}[->,>=stealth',shorten >=1pt,auto,node distance=2.8cm,
+                     semithick]
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+node[state]			(A)	{A};
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+node[state]			(B) [right of=A] {B};
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+path
+\end_layout
+
+\begin_layout Plain Layout
+
+		(A) edge	node {} (B)
+\end_layout
+
+\begin_layout Plain Layout
+
+		(B) edge	node {} (A);
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{tikzpicture}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Formula $\Downarrow$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{tikzpicture}[->,>=stealth',shorten >=1pt,auto,node distance=2.8cm,
+                     semithick]
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+node[state]			(A)	{A};
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+node[state]			(B) [right of=A] {B};
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+path
+\end_layout
+
+\begin_layout Plain Layout
+
+		(A) edge	node {} (B);
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{tikzpicture}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Removing Edges To Increase Value
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+Again, the original state was balanced and each node had equal chances of
+ being visited.
+ Once removing the 
+\begin_inset Formula $B\rightarrow A$
+\end_inset
+
+ edge, 
+\begin_inset Formula $B$
+\end_inset
+
+ becomes a sink and will drain all probability towards it thus achieving
+ the desired effect.
+\end_layout
+
+\end_body
+\end_document
