@@ -77,31 +77,40 @@ enumitem
 
 \begin_body
 
+\begin_layout Section
+Basic Reproductive Number
+\end_layout
+
+\begin_layout Subsection
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Standard
-\begin_inset Formula 
-\[
-I,S
-\]
-
+Using the notation of 
+\begin_inset Formula $P_{SI},P_{IR},P_{RS}$
 \end_inset
 
-
-\begin_inset Formula 
-\[
-P\left(\overline{I\rightarrow I_{s},k}\right)
-\]
-
+ and setting 
+\begin_inset Formula $P_{RS}=1$
 \end_inset
 
-
-\begin_inset Formula 
-\[
-P\left(S\rightarrow S_{I},k\right)
-\]
-
+, examine the following setting: two conected nodes where the first is infected
+ and the second isn't.
+ The probability that the second node will move from susceptible to infected
+ on the 
+\begin_inset Formula $k_{th}$
 \end_inset
 
-
+ turn is:
 \begin_inset Formula 
 \[
 P\left(\text{Infected in the k turn}\right)=\left(1-P_{SI}\right)^{k-1}P_{SI}\left(1-P_{IR}\right)^{k}
@@ -109,16 +118,66 @@ P\left(\text{Infected in the k turn}\right)=\left(1-P_{SI}\right)^{k-1}P_{SI}\le
 
 \end_inset
 
-
+and the total probability of the node being infected before the first is
+ cured is:
 \begin_inset Formula 
 \begin{align*}
-P_{Q} & =\sum_{k=1}^{\infty}\left(1-P_{SI}\right)^{k-1}P_{SI}\left(1-P_{IR}\right)^{k}\\
- & =\sum_{k=1}^{\infty}\left[\left(1-P_{SI}\right)\left(1-P_{IR}\right)\right]^{k-1}\frac{P_{SI}}{\left(1-P_{IR}\right)}\\
- & =\frac{P_{SI}}{\left(1-P_{IR}\right)}\sum_{k=1}^{\infty}\left[\left(1-P_{SI}\right)\left(1-P_{IR}\right)\right]^{k-1}\\
- & =\frac{P_{SI}}{\left(1-P_{IR}\right)}\sum_{k=0}^{\infty}\left[\left(1-P_{SI}\right)\left(1-P_{IR}\right)\right]^{k}\\
- & =\frac{P_{SI}}{\left(1-P_{IR}\right)}\cdot\frac{1}{1-\left(1-P_{SI}\right)\left(1-P_{IR}\right)}\\
- & =\frac{P_{SI}}{\left(1-P_{IR}\right)}\cdot\frac{1}{P_{SI}+P_{IR}-P_{SI}P_{IR}}
+P & =\sum_{k=1}^{\infty}\left(1-P_{SI}\right)^{k-1}P_{SI}\left(1-P_{IR}\right)^{k}\\
+ & =\sum_{k=1}^{\infty}\left[\left(1-P_{SI}\right)\left(1-P_{IR}\right)\right]^{k-1}P_{SI}\left(1-P_{IR}\right)\\
+ & =P_{SI}\left(1-P_{IR}\right)\sum_{k=1}^{\infty}\left[\left(1-P_{SI}\right)\left(1-P_{IR}\right)\right]^{k-1}\\
+ & =P_{SI}\left(1-P_{IR}\right)\sum_{k=0}^{\infty}\left[\left(1-P_{SI}\right)\left(1-P_{IR}\right)\right]^{k}\\
+ & =P_{SI}\left(1-P_{IR}\right)\cdot\frac{1}{1-\left(1-P_{SI}\right)\left(1-P_{IR}\right)}\\
+ & =P_{SI}\left(1-P_{IR}\right)\cdot\frac{1}{P_{SI}+P_{IR}-P_{SI}P_{IR}}
 \end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Expected Infected Neighbours
+\end_layout
+
+\begin_layout Standard
+Treating each neighbour as an independent bernoulli trial with probability
+ of success being the result from 
+\begin_inset Formula $1.1$
+\end_inset
+
+, and given we have 
+\begin_inset Formula $d$
+\end_inset
+
+ neighbours then the infected vertex will infect
+\begin_inset Formula 
+\[
+P_{SI}\left(1-P_{IR}\right)\cdot\frac{d}{P_{SI}+P_{IR}-P_{SI}P_{IR}}
+\]
+
+\end_inset
+
+vertices on average.
+\end_layout
+
+\begin_layout Subsection
+Empiric Epidemic Spread With Infection Expectancy 2
+\end_layout
+
+\begin_layout Standard
+Taking the expectating and plugging in 
+\begin_inset Formula $d=4$
+\end_inset
+
+ then equating to the desired expectation of 
+\begin_inset Formula $2$
+\end_inset
+
+ we get the relation:
+\begin_inset Formula 
+\[
+P_{SI}=\frac{P_{IR}}{\left(1-P_{IR}\right)}
+\]
 
 \end_inset
 

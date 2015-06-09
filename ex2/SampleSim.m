@@ -6,8 +6,8 @@ Susceptible=0;
 Infected = 1;
 Removed = 2;
 
-pSI=0.005; %probability of infection by each neighbor
-pIR=0.025; %probability of spontaneous recovery
+pSI=0.0416; %probability of infection by each neighbor
+pIR=0.04; %probability of spontaneous recovery
 %pRS=0.0003; %probability of spontaneous lost immunity
 pRS=1.0;
 
