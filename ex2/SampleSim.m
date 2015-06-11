@@ -6,19 +6,21 @@ Susceptible=0;
 Infected = 1;
 Removed = 2;
 
-pSI=0.0416; %probability of infection by each neighbor
-pIR=0.04; %probability of spontaneous recovery
+pSI=0.08; %probability of infection by each neighbor
+pIR=0.15; %probability of spontaneous recovery
+%pSI=0.01587301587301587301587301587302; %probability of infection by each neighbor
+%pIR=0.1; %probability of spontaneous recovery
 %pRS=0.0003; %probability of spontaneous lost immunity
-pRS=1.0;
+pRS=0.005;
 
 %n = 200; %the size of the small-world network will be n-by-n
-n=100;
-p_rewire = 0.001; %the probability that an edge is rewired in the small-world network.
+n=300;
+p_rewire = 0.01; %the probability that an edge is rewired in the small-world network.
 
 %create the graph:
 disp('creating graph...')
 %edgeList = SmallWorld(n,p_rewire);
-edgeList = UniformSelect(10000,4);
+edgeList = SmallWorld(n,p_rewire);
 
 
 %start all nodes out as Susceptible
