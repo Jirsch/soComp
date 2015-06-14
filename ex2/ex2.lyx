@@ -77,21 +77,20 @@ enumitem
 
 \begin_body
 
-\begin_layout Section
-Basic Reproductive Number
+\begin_layout Title
+soComp - Ex 2
 \end_layout
 
-\begin_layout Subsection
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
+\begin_layout Author
+Issack Rosenberg (200756245), Jonathan Hirsch (200357697)
 \end_layout
 
-\end_inset
+\begin_layout Section*
+3.1 Basic Reproductive Number
+\end_layout
 
-
+\begin_layout Subsection*
+3.1.1
 \end_layout
 
 \begin_layout Standard
@@ -135,8 +134,8 @@ P & =\sum_{k=1}^{\infty}\left(1-P_{SI}\right)^{k-1}P_{SI}\left(1-P_{IR}\right)^{
 
 \end_layout
 
-\begin_layout Subsection
-Expected Infected Neighbours
+\begin_layout Subsection*
+3.1.2 Expected Infected Neighbours
 \end_layout
 
 \begin_layout Standard
@@ -160,8 +159,8 @@ P_{SI}\left(1-P_{IR}\right)\cdot\frac{d}{P_{SI}+P_{IR}-P_{SI}P_{IR}}
 vertices on average.
 \end_layout
 
-\begin_layout Subsection
-Empiric Epidemic Spread With Infection Expectancy 2
+\begin_layout Subsection*
+3.1.3 Empiric Epidemic Spread With Infection Expectancy 2
 \end_layout
 
 \begin_layout Standard
@@ -181,7 +180,501 @@ P_{SI}=\frac{P_{IR}}{\left(1-P_{IR}\right)}
 
 \end_inset
 
+Indeed, using values that hold this relation cause the epidemics to grow
+ more often than not
+\begin_inset Float figure
+wide false
+sideways false
+status open
 
+\begin_layout Plain Layout
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="2" columns="2">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename plots/E = 2 (1).jpg
+	scale 40
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename plots/E = 2 (2).jpg
+	scale 40
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename plots/E = 2 (3).jpg
+	scale 40
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename plots/E = 2 (4).jpg
+	scale 40
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Expectation 2
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection*
+3.1.4
+\end_layout
+
+\begin_layout Standard
+Here, we get
+\begin_inset Formula 
+\[
+P_{SI}=\frac{P_{IR}}{7\left(1-P_{IR}\right)}
+\]
+
+\end_inset
+
+Simulating using the new relation yields that in most cases epidemics will
+ die out.
+ Rarely we saw partial slow spread epidemic that had fluctuations between
+ infected and susceptible like in the last figure 
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="2" columns="2">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename plots/E = .5 (1).jpg
+	scale 40
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename plots/E = .5 (2).jpg
+	scale 40
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename plots/E = .5 (3).jpg
+	scale 40
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename plots/E = .5 (5).jpg
+	scale 40
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Expectation 0.5
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section*
+3.2 Scale Free Networks
+\end_layout
+
+\begin_layout Standard
+Simulating free scale graphs with the same parameters as in uniform select
+ showed us many times fast spread with a limit in the number of infested
+ nodes 
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="2" columns="1">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename plots/ScaleFree 3.2.jpg
+	scale 40
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename plots/ScaleFree 3.2 (1).jpg
+	scale 40
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Scale Free
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section*
+3.3 Small World
+\end_layout
+
+\begin_layout Subsection*
+3.3.1
+\end_layout
+
+\begin_layout Standard
+Now
+\begin_inset Formula 
+\[
+P_{SI}=0.08,P_{IR}=0.15,P_{RS}=0.005
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+N=300,P_{rewire}=0
+\]
+
+\end_inset
+
+
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename plots/SmallWorld 3.3.1.jpg
+	scale 40
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+No rewire
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+The epidemic spread fast but didn’t last too long because without rewiring,
+ the disease didn't infest again in visited areas.
+\end_layout
+
+\begin_layout Subsection*
+3.3.2
+\end_layout
+
+\begin_layout Standard
+Now taking
+\begin_inset Formula 
+\[
+N=300,P_{rewire}=0.0002
+\]
+
+\end_inset
+
+
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename plots/SmallWorld 3.3.2.jpg
+	scale 40
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Rewire 0.0002
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+As we can see, now the epidemic last much longer than without rewiring and
+ the number of infected individuals is fluctuating greatly.
+ The reason is that without rewiring the epidemic is not infecting again
+ where it already passes, while in this case the rewiring allows it to infect
+ again visited areas using a long distance link.
+\end_layout
+
+\begin_layout Subsection*
+3.3.3
+\end_layout
+
+\begin_layout Standard
+Finally
+\begin_inset Formula 
+\[
+N=300,P_{rewire}=0.01
+\]
+
+\end_inset
+
+
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename plots/SmallWorld 3.3.3.jpg
+	scale 40
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Rewire 0.01
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+Now, the epidemic spread much faster using long distance links, that can
+ be found in higher probability, but fades faster as well.
+ The reason is that the graph is not wide enough, the epidemic spread very
+ fast and the nodes are in remove state, so the epidemic still can't infest
+ them again, so it's fades.
+\end_layout
+
+\begin_layout Section*
+Reproduce Results:
+\end_layout
+
+\begin_layout Standard
+We ran our simulations using the code supplied in 
+\begin_inset Formula $SampleSim.m$
+\end_inset
+
+.
+ The only modification we've made between runs are the probability variables,
+ and which function to generate the graph with (e.g.
+ SimpleWorld or ScaleFree or UniformSelect
 \end_layout
 
 \end_body
